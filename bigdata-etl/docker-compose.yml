@@ -1,0 +1,50 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.1
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://127.0.0.1:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:7.6.1
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8082"
+    environment:
+      KAFKA_REST_HOST_NAME: kafka-rest
+      KAFKA_REST_BOOTSTRAP_SERVERS: kafka:29092
+      KAFKA_REST_LISTENERS: http://0.0.0.0:8082
+
+  redis:
+    image: apache/kvrocks:2.11.0
+    ports:
+      - "6379:6666"
+
+  nginx:
+    image: openresty/openresty:1.25.3.2-0-alpine
+    depends_on:
+      - kafka-rest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./deploy/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+      - ./deploy/nginx/collect.lua:/etc/nginx/lua/collect.lua:ro

@@ -1,0 +1,26 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: bigdata-backend
+  datasource:
+    url: ${DORIS_JDBC_URL:jdbc:mysql://127.0.0.1:9030/bigdata_analytics?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DORIS_USER:root}
+    password: ${DORIS_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 12
+      minimum-idle: 2
+      connection-timeout: 3000
+analytics:
+  app-id: ${ANALYTICS_APP_ID:demo-app}
+  mock-enabled: ${ANALYTICS_MOCK_ENABLED:true}
+  file-enabled: ${ANALYTICS_FILE_ENABLED:false}
+  file:
+    aggregate-path: ${ANALYTICS_FILE_AGGREGATE_PATH:../bigdata-etl/runtime/realtime/event_aggregate.jsonl}
+  ingest-endpoint: ${INGEST_ENDPOINT:http://127.0.0.1:8080/collect}
+
+logging:
+  level:
+    com.bigdata.backend: info

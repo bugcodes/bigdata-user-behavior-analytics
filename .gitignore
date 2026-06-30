@@ -1,0 +1,42 @@
+.DS_Store
+.idea/
+.vscode/
+
+# secrets
+*.pem
+*.key
+*.p12
+*.jks
+.env
+.env.*
+!*.env.example
+zhanghao.txt
+xjp.txt
+xjpo.txt
+*password*
+*passwd*
+*secret*
+
+# frontend
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# java
+target/
+*.class
+*.jar
+*.war
+
+# runtime data
+runtime/realtime/
+runtime/*.log
+runtime/docker-compose-doris.yaml
+data/
+logs/
+
+# generated archives
+*.tgz
+*.tar.gz
+*.zip

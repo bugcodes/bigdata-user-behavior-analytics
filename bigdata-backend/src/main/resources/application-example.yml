@@ -1,0 +1,16 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    url: ${DORIS_JDBC_URL:jdbc:mysql://127.0.0.1:9030/bigdata_analytics?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DORIS_USER:root}
+    password: ${DORIS_PASSWORD:}
+
+analytics:
+  app-id: ${ANALYTICS_APP_ID:demo-app}
+  mock-enabled: ${ANALYTICS_MOCK_ENABLED:false}
+  file-enabled: ${ANALYTICS_FILE_ENABLED:false}
+  ingest-endpoint: ${INGEST_ENDPOINT:http://127.0.0.1:8080/collect}
+  realtime-counter:
+    path: ${ANALYTICS_REALTIME_COUNTER_PATH:/data/app/bigdata-backend/runtime/realtime-visits.json}
