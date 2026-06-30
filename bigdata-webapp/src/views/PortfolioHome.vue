@@ -119,12 +119,16 @@
         </a>
       </div>
       <div class="ai-grid">
-        <article v-for="item in aiPractices" :key="item.title" class="ai-card">
+        <a v-for="item in aiPractices" :key="item.title" class="ai-card" :href="item.url" target="_blank" rel="noreferrer">
           <component :is="item.icon" :size="22" />
           <span>{{ item.tag }}</span>
           <h3>{{ item.title }}</h3>
           <p>{{ item.desc }}</p>
-        </article>
+          <strong>
+            {{ item.action }}
+            <ExternalLink :size="15" />
+          </strong>
+        </a>
       </div>
     </section>
 
@@ -319,20 +323,26 @@ const aiPractices = [
   {
     tag: 'RAG / Knowledge Base',
     title: 'RAG 问答与知识库项目',
-    desc: '围绕文档切分、向量召回、重排、上下文拼接和回答生成，沉淀可解释的 AI 应用链路。',
-    icon: Bot
+    desc: '真实 RAG 工作台项目，覆盖知识库管理、文档切分、向量召回、上下文拼接和问答生成链路。',
+    icon: Bot,
+    url: 'https://github.com/bugcodes/rag-workspace',
+    action: '查看 rag-workspace'
   },
   {
     tag: 'Agent Engineering',
     title: 'OpenClaw / Hermes 工程复刻',
-    desc: '重度使用 OpenClaw，并尝试复刻 Hermes Agent 类工程，关注工具调用、任务编排和本地自动化体验。',
-    icon: Puzzle
+    desc: '基于 Java 复刻 Agent Harness 工程骨架，关注工具调用、任务编排、执行循环和本地自动化体验。',
+    icon: Puzzle,
+    url: 'https://github.com/bugcodes/agent-harness-java',
+    action: '查看 agent-harness-java'
   },
   {
     tag: 'AI Workflow',
     title: 'AI 辅助内容与工具生产',
     desc: '用 AI 工具持续产出指南、资源索引、工具集合和视觉内容，把使用经验产品化、文档化。',
-    icon: WandSparkles
+    icon: WandSparkles,
+    url: '#opensource',
+    action: '查看公开作品'
   }
 ];
 

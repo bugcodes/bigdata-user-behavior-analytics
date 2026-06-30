@@ -495,6 +495,8 @@ button.primary {
 }
 
 .ai-card {
+  display: flex;
+  flex-direction: column;
   min-height: 248px;
   border-radius: 8px;
   padding: 18px;
@@ -530,6 +532,15 @@ button.primary {
 .work-card p {
   color: var(--portfolio-muted);
   line-height: 1.7;
+}
+
+.ai-card strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--portfolio-ink);
+  font-size: 14px;
 }
 
 .opensource-layout {
