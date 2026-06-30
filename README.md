@@ -91,7 +91,6 @@ mvn -DskipTests package
 
 - [架构说明](docs/architecture.md)
 - [部署说明](docs/deploy.md)
-- [Flink 面试技术点映射](bigdata-etl/docs/flink-interview-points.md)
 
 ## 安全说明
 

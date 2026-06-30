@@ -55,5 +55,3 @@ USERS=2000000 bash scripts/seed-events-only.sh
 - Redis/Kvrocks 可承载事件元数据、虚拟事件规则、实验分组和黑名单维表。
 - ADS 漏斗可以用 Flink SQL Interval Join 或离线调度从 DWD 明细补算。
 - 对 Doris 写入开启 label 规则和重试队列，失败批次投递 Kafka DLQ 方便回放。
-
-更多 Flink 面试点映射见 [docs/flink-interview-points.md](docs/flink-interview-points.md)。
