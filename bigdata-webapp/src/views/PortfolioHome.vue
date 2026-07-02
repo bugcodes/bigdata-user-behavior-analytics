@@ -194,19 +194,31 @@
     </section>
 
     <section id="contact" class="contact-band">
-      <div>
+      <div class="contact-copy">
         <p>求职方向</p>
         <h2>Java后端 / 大数据开发 / AI应用开发</h2>
+        <div class="contact-actions">
+          <a class="primary-link" href="/bigdata">
+            <MonitorUp :size="18" />
+            进入 Demo
+          </a>
+        </div>
       </div>
-      <div class="contact-actions">
-        <a class="primary-link" href="/bigdata">
-          <MonitorUp :size="18" />
-          进入 Demo
-        </a>
-        <a class="secondary-link" href="mailto:">
-          <Mail :size="18" />
-          联系我
-        </a>
+      <div class="contact-methods" aria-label="联系方式">
+        <div class="contact-method">
+          <Mail :size="20" />
+          <div>
+            <span>邮箱</span>
+            <a href="mailto:tsuzbj@163.com">tsuzbj@163.com</a>
+          </div>
+        </div>
+        <div class="wechat-card">
+          <img src="/images/wechat-qr.jpg" alt="微信二维码" />
+          <div>
+            <span>微信</span>
+            <strong>扫码添加好友</strong>
+          </div>
+        </div>
       </div>
     </section>
     <a class="floating-top" href="#top" title="回到顶部">
